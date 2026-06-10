@@ -11,18 +11,18 @@ jobs:
 
     steps:
       - name: Checkout codigo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Instalar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Instalar Surge
         run: npm install --global surge
 
       - name: Desplegar a Surge
-        run: surge ./ jeison-practica.surge.sh
+        run: surge ./ jeison-practica.surge.sh --token ${{ secrets.SURGE_TOKEN }}
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
